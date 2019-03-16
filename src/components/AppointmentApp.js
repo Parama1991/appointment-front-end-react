@@ -45,7 +45,7 @@ class AppointmentApp extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:3010/api/retrieveSlots').then(response => {
+    axios.get('https://appointment-back-end-express.herokuapp.com/api/retrieveSlots').then(response => {
       console.log("response via db: ", response);
       this.handleDBReponse(response.data);
     });
@@ -330,7 +330,7 @@ handleSubmit() {
    };
 
    axios
-     .post("http://localhost:3010/api/appointmentCreate", newAppointment)
+     .post("https://appointment-back-end-express.herokuapp.com/api/appointmentCreate", newAppointment)
      .then(response =>
        this.setState({
          confirmationSnackbarMessage: "Appointment succesfully added!",

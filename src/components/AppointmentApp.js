@@ -123,7 +123,7 @@ class AppointmentApp extends Component {
       } >
       <
       RaisedButton label = {
-        stepIndex === 2 ? "Bestätigen" : "Weiter"
+        stepIndex === 2 ? "Submit" : "Next"
       }
       disableTouchRipple = {
         true
@@ -146,7 +146,7 @@ class AppointmentApp extends Component {
       }
       /> {
       step > 0 && ( <
-        FlatButton label = "Zurück"
+        FlatButton label = "Back"
         disabled = {
           stepIndex === 0
         }

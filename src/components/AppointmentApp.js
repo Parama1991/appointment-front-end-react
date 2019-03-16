@@ -46,7 +46,6 @@ class AppointmentApp extends Component {
 
   componentWillMount() {
     axios.get('https://appointment-back-end-express.herokuapp.com/api/retrieveSlots').then(response => {
-      console.log("response via db: ", response);
       this.handleDBReponse(response.data);
     });
   }
@@ -174,7 +173,6 @@ handleSetAppointmentDate(date) {
 }
 
 handleSetAppointmentSlot(slot) {
-  console.log(slot);
   this.setState({
     appointmentSlot: slot
   });
@@ -224,7 +222,6 @@ checkDisableDate(day) {
        (schedule[day] = true)
      }
    }
-   console.log(schedule);
    this.setState({
      schedule: schedule
    });
@@ -246,18 +243,10 @@ checkDisableDate(day) {
           const time1 = moment().hour(9).minute(0).add(slot, "hours");
           const time2 = moment().hour(9).minute(0).add(slot + 1, "hours");
 
-          console.log(this.state.schedule[appointmentDateString]);
-          if (this.state.schedule[appointmentDateString])
-          {
-            console.log(this.state.schedule);
-          }
-
           // Check if another appointment is already at this slot
           const scheduleDisabled = this.state.schedule[appointmentDateString]
            ? this.state.schedule[appointmentDateString][slot]
            : false;
-
-           console.log(scheduleDisabled);
 
            const meridiemDisabled = this.state.appointmentMeridiem
             ? time1.format("a") === "am"
